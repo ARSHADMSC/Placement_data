@@ -1,0 +1,122 @@
+---
+title: "myproject"
+author: "arshad-aravind-radhakrishnan"
+date: "02/06/2022"
+output: html_document
+---
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+placement_df <-read.csv("D:/Statitics/project/Placement_Data_Full_Class.csv")
+placement_df
+```
+
+```{r}
+head(placement_df)
+```
+```{r}
+dim(placement_df)
+```
+```{r}
+colnames(placement_df)
+```
+
+```{r}
+str(placement_df)
+```
+```{r}
+table(placement_df$status)
+table(placement_df$gender)
+table(placement_df$ssc_b)
+table(placement_df$hsc_b)
+table(placement_df$degree_t)
+table(placement_df$workex)
+```
+```{r}
+hist(placement_df$ssc_p)
+```
+```{r}
+hist(placement_df$hsc_p)
+```
+```{r}
+hist(placement_df$degree_p)
+```
+```{r}
+hist(placement_df$etest_p)
+```
+
+```{r}
+options(scipen=999)
+
+hist(placement_df$salary)
+```
+```{r}
+mean(placement_df$salary,na.rm = TRUE)
+```
+```{r}
+median(placement_df$salary,na.rm = TRUE)
+```
+```{r}
+table(placement_df$specialisation)
+```
+
+```{r}
+table(placement_df$specialisation,placement_df$status)
+```
+
+```{r}
+table(placement_df$specialisation,placement_df$gender,placement_df$workex,placement_df$salary)
+```
+```{r}
+table(placement_df$degree_t,placement_df$salary)
+```
+```{r}
+boxplot(placement_df$salary ~ placement_df$specialisation * placement_df$gender)
+```
+
+
+```{r}
+options(scipen = 999)
+boxplot(placement_df$salary ~ placement_df$specialisation)
+```
+
+```{r}
+options(scipen = 999)
+boxplot(placement_df$salary ~ placement_df$status)
+```
+
+
+```{r}
+boxplot(placement_df$salary ~placement_df$gender)
+```
+```{r}
+barplot(table(placement_df$status))
+```
+```{r}
+barplot(table(placement_df$ssc_b))
+barplot(table(placement_df$hsc_b))
+barplot(table(placement_df$hsc_s))
+barplot(table(placement_df$degree_t))
+```
+```{r}
+barplot(table(placement_df$gender))
+barplot(table(placement_df$workex))
+barplot(table(placement_df$specialisation))
+```
+
+```{r}
+barplot(table(placement_df$gender, placement_df$status))
+```
+```{r}
+barplot(table(placement_df$gender, placement_df$status), beside=TRUE)
+
+```
+
+
+```{r}
+barplot(table(placement_df$degree_t, placement_df$specialisation),main = "Grouped Barchart",xlab = "Degree",col = c("darkblue","orange","red"),legend.text = rownames(table(placement_df$degree_t, placement_df$specialisation)),beside = TRUE)
+```
+
